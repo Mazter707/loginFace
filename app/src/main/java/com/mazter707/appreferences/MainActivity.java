@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     LoginButton loginButton;
     TextView nombre;
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -48,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         nombre = (TextView) findViewById(R.id.nombre);
-
-
+        
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -97,5 +95,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-}
+
+    }
+
 
