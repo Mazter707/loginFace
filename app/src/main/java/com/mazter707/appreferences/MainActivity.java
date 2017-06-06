@@ -1,6 +1,7 @@
 package com.mazter707.appreferences;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private AccessTokenTracker accessTokenTracker;
     private ProfileTracker profileTracker;
     LoginButton loginButton;
-    TextView nombre;
+    TextView name;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -46,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
-        nombre = (TextView) findViewById(R.id.nombre);
+        name = (TextView) findViewById(R.id.name);
         
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 AccessToken accessToken = loginResult.getAccessToken();
                 Profile profile = Profile.getCurrentProfile();
+                String name = profile.getName();
+                Uri uriFoto=profile.getProfilePictureUri(100,100);
                 Datos(profile);
                 accessTokenTracker = new AccessTokenTracker() {
 
@@ -73,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 loginButton.setReadPermissions("user_friends");
                 loginButton.setReadPermissions("public_profile");
 
+                Intent intent = new Intent(MainActivity.this,Visor.class);
+                intent.putExtra("NAME", name);
+                intent.putExtra("PHOTO", uriFoto.toString());
+                startActivity(intent);
+
             }
 
             @Override
@@ -89,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
         private void Datos(Profile perfil){
         if (perfil!=null){
             String nom=perfil.getName();
-            nombre.setText("Hola "+nom);
+            name.setText("Hola "+nom);
         }else {
-            nombre.setText("Estamos probando sesiones");
+            name.setText("Estamos probando sesiones");
         }
 
     }
