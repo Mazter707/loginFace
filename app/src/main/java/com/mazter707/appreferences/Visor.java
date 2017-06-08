@@ -17,6 +17,17 @@ import java.io.IOException;
 
 public class Visor extends AppCompatActivity {
 
+    private static final String PROPERTY_ID = "";
+    public static int GENERAL_TRACKER = 0;
+
+    public enum TrackerName {
+        APP_TRACKER, // Tracker used only in this app
+        GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg. roll-up tracking.
+        ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
+    }
+
+
+
     String url_imagen;
 
     ImageView image;
@@ -41,7 +52,7 @@ public class Visor extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "AUCHHH   NO   ME   TOQUESSS   !!! ", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "AUN   NO   ME   PROGRAMAN    !!! ", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

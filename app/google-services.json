@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "883776880000",
+    "project_id": "analytics-4823f"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883776880000:android:51573051b35408b5",
+        "android_client_info": {
+          "package_name": "com.mazter707.appreferences"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883776880000-5s92tksj5a28b0kahheau3oobjknp5bo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfz0Viby6KKrFResmmcL0kD2P8MQDTPXU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-100544289-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

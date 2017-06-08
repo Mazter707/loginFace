@@ -16,8 +16,12 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Tracker mTracker;
 
     private CallbackManager callbackManager;
     private AccessTokenTracker accessTokenTracker;
@@ -37,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         Profile profile=Profile.getCurrentProfile();
         Datos(profile);
 
+        mTracker.setScreenName("Main Screen");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
     }
 
     @Override
@@ -45,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+
+        GoogleAnalyticsApplication application = (GoogleAnalyticsApplication) getApplication();
+        mTracker= application.getDefaultTracker();
+
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         name = (TextView) findViewById(R.id.name);
@@ -81,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("PHOTO", uriFoto.toString());
                 startActivity(intent);
 
+
+
             }
 
             @Override
@@ -96,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
     }
         private void Datos(Profile perfil){
         if (perfil!=null){
-            String nom=perfil.getName();
-            name.setText("Hola "+nom);
+
+            name.setText(" Testeando Analytics  !!! ");
         }else {
-            name.setText("Estamos probando sesiones");
+            name.setText("Estamos probando analytics  !!!");
         }
 
     }
